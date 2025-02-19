@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_application/constant/app_colors.dart';
 import 'package:food_delivery_application/constant/app_imges.dart';
+import 'package:food_delivery_application/modules/onboarding/views/onboarding_screen.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,11 +11,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
+  @override
+  void initState() {
+    super.initState();
+    redirectToNextScreen();
+  }
+
+  // Go to onboarding screen ...
+  redirectToNextScreen()async{
+    await Future.delayed( const Duration(seconds: 2));
+    Get.to(const OnboardingScreen());
+  }
+  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColors.blackColor,
       body: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -34,13 +47,13 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             child: Image.asset(
               AppImages.backgroundImage,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
 
           // App Logo....
           Positioned(
-            top: 350,
+            top: 360,
             left: 0,
             right: 0,
             child: Image.asset(
