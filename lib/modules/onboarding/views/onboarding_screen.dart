@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery_application/constant/app_colors.dart';
+import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
+import 'package:food_delivery_application/modules/auth_module/views/login_screen.dart';
 import 'package:food_delivery_application/modules/onboarding/controller/onboarding_controller.dart';
 import 'package:get/get.dart';
 
@@ -53,35 +54,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
            const SizedBox(height: 60),
 
           // Button part...
-          GestureDetector(
+           AppPrimaryButton(
+            title: "Next",
             onTap: () {
               int tempIndex = onboardingController.index.value;
 
               if (tempIndex == onboardingController.onboardingItemsList.length - 1) {
                 // Go to next screen....
+                Get.to(const LoginScreen());
               } else {
                 onboardingController.index(tempIndex + 1);
               }
             },
-            child: Container(
-              height: 57,
-              width: 157,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: AppColors.lightGreenColor,
-              ),
-              child: const Center(
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                   ),
-                 ),
-               ),
-             ),
-           ),
+          ),
          ],
        ),
       ),
