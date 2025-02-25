@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
 import 'package:food_delivery_application/common/text_fields/custom_text_field.dart';
 import 'package:food_delivery_application/constant/app_colors.dart';
 import 'package:food_delivery_application/constant/app_imges.dart';
 import 'package:food_delivery_application/modules/auth_module/controller/login_controller.dart';
+import 'package:food_delivery_application/modules/auth_module/views/signup_screen.dart';
 import 'package:food_delivery_application/modules/auth_module/widgets/social_media_button.dart';
 import 'package:get/get.dart';
 
@@ -67,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 40),
                     // Or Continue With text part....
                     const Text(
-                      "Login Up For Free",
+                      "Login For Free",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -86,25 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               keyboardType: TextInputType.emailAddress,
                               hintText: "Email",
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                          //   child: TextField(
-                          //     style: const TextStyle(
-                          //       color: Colors.white,
-                          //     ),
-                          //     cursorColor: Colors.grey,
-                          //     decoration: InputDecoration(
-                          //       hintText: "Email",
-                          //       filled: true,
-                          //       fillColor: AppColors.textFieldColor,
-                          //       contentPadding: const EdgeInsets.all(18),
-                          //       border: OutlineInputBorder(
-                          //         borderRadius: BorderRadius.circular(15),
-                          //         borderSide: BorderSide.none,
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
                           const SizedBox(height: 20),
                           CustomTextField(
                             obscureText: loginController.obscureText.value,
@@ -123,41 +106,25 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                          //   child: TextField(
-                          //     obscureText: loginController.obscureText.value,
-                          //     style: const TextStyle(
-                          //       color: Colors.white,
-                          //     ),
-                          //     cursorColor: Colors.grey,
-                          //     decoration: InputDecoration(
-                          //         hintText: "Password",
-                          //         filled: true,
-                          //         fillColor: AppColors.textFieldColor,
-                          //         contentPadding: const EdgeInsets.all(18),
-                          //         border: OutlineInputBorder(
-                          //           borderRadius: BorderRadius.circular(15),
-                          //           borderSide: BorderSide.none,
-                          //         ),
-                          //         suffixIcon: IconButton(
-                          //           onPressed: () {
-                          //             loginController.obscureText.value =
-                          //                 !loginController.obscureText.value;
-                          //           },
-                          //           icon: Icon(
-                          //             loginController.obscureText.value
-                          //                 ? Icons.visibility
-                          //                 : Icons.visibility_off,
-                          //           ),
-                          //         ),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
-        
+                    const SizedBox(height: 10),
+                    // Forgot Your Password? text part....
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Forget Your Password?",
+                          style: TextStyle(
+                            color: AppColors.lightGreenColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     // Or Continue With text part....
                     const Text(
@@ -185,21 +152,39 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    // Forgot Your Password? text part....
-                    const Text(
-                      "Forgot Your Password?",
-                      style: TextStyle(
-                          color: AppColors.lightGreenColor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 70),
+
+                    const SizedBox(height: 40),
                     // Button part...
                     AppPrimaryButton(
                       title: "Log in",
                       onTap: () {},
+                    ),
+
+                    // Don't have an account? signUp....
+                    const SizedBox(height: 10),
+                    RichText(
+                      text: TextSpan(
+                        text: "Don't have an account? ",
+                        style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "SignUp",
+                            style: const TextStyle(
+                                fontSize: 15,
+                                color: AppColors.lightGreenColor,
+                                fontWeight: FontWeight.w600
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = (){
+                                 Get.to(const SignUpScreen());
+                              },
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
