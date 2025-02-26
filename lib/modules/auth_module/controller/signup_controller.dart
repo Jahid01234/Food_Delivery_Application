@@ -16,13 +16,17 @@ class SignupController extends GetxController{
           password: password,
       );
       if(userCredential.user !=null){
-        mySnackBarMessage("User created!", context);
+        mySnackBarMessage("User created successfully!", context);
       }
     }on FirebaseException catch(e){
       if(e.code == "weak-password"){
         mySnackBarMessage("The password provided is too weak!", context);
       }else if(e.code == "email-already-in-use"){
         mySnackBarMessage("The account already exists for that email!", context);
+      } else if (e.code == "network-request-failed") {
+        mySnackBarMessage("No internet connection! Please check your network.", context);
+      } else {
+        mySnackBarMessage(e.message ?? "Something went wrong!", context);
       }
     } catch(e){
       mySnackBarMessage( e.toString(), context);

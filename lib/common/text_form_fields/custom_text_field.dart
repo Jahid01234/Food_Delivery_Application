@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_application/constant/app_colors.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
   final String hintText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
 
-  const CustomTextField({
+  const CustomTextFormField({
     super.key,
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText,
+    this.validator,
     required this.controller,
     required this.keyboardType,
     required this.hintText,
@@ -23,10 +25,12 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
+      child: TextFormField(
         obscureText: obscureText ?? false,
         controller: controller,
         keyboardType: keyboardType,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: validator,
         style: const TextStyle(
           color: Colors.white,
         ),
@@ -34,6 +38,9 @@ class CustomTextField extends StatelessWidget {
         cursorColor: Colors.grey,
         decoration: InputDecoration(
           hintText: hintText,
+          hintStyle: const TextStyle(
+            color: Colors.grey,
+          ),
           filled: true,
           fillColor: AppColors.textFieldColor,
           contentPadding: const EdgeInsets.all(18),
