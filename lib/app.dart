@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:food_delivery_application/bindings/controller_binder.dart';
 import 'package:food_delivery_application/constant/app_colors.dart';

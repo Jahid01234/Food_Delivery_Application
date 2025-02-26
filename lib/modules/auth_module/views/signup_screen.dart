@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
+import 'package:food_delivery_application/common/snack_bar_message/my_snackbar_message.dart';
 import 'package:food_delivery_application/common/text_fields/custom_text_field.dart';
 import 'package:food_delivery_application/constant/app_colors.dart';
 import 'package:food_delivery_application/constant/app_imges.dart';
@@ -18,7 +19,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -85,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomTextField(
-                            controller: _nameController,
+                            controller: _userNameController,
                             keyboardType: TextInputType.text,
                             hintText: "Name",
                             prefixIcon: Padding(
@@ -165,13 +166,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 35),
+
                     // Button part...
                     AppPrimaryButton(
                       title: "Sign Up",
-                      onTap: () {},
+                      onTap: () {
+                        if(
+                        _userNameController.text.isNotEmpty &&
+                            _emailController.text.isNotEmpty &&
+                            _passwordController.text.isNotEmpty
+                        ){
+                          signupController.createAccount(
+                            context: context,
+                            userName: _userNameController.text,
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                          );
+                          _userNameController.clear();
+                          _emailController.clear();
+                          _passwordController.clear();
+
+                        }else{
+                          mySnackBarMessage('Fill all the fields!', context);
+                        }
+                      },
                     ),
+
+
                     // Don't have an account? signUp....
                     const SizedBox(height: 10),
                     RichText(
@@ -209,7 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _userNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
