@@ -19,7 +19,7 @@ class AppRoutes {
     ),
 
 
-    // auth start..
+
     // GetPage(name: onboarding, page: () => OnboardingScreen()),
     // GetPage(name: login, page: () => LoginScreen()),
     // GetPage(name: register, page: () => RegisterScreen()),
