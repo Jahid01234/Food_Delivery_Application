@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery_application/constant/app_colors.dart';
+import 'package:food_delivery_application/core/const/app_colors.dart';
 
 class AppPrimaryButton extends StatelessWidget {
   final String title;

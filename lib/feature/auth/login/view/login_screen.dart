@@ -1,12 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
-import 'package:food_delivery_application/common/text_form_fields/custom_text_field.dart';
-import 'package:food_delivery_application/constant/app_colors.dart';
-import 'package:food_delivery_application/constant/app_imges.dart';
-import 'package:food_delivery_application/modules/auth_module/controller/login_controller.dart';
-import 'package:food_delivery_application/modules/auth_module/views/signup_screen.dart';
-import 'package:food_delivery_application/modules/auth_module/widgets/social_media_button.dart';
+import 'package:food_delivery_application/core/global_widgets/app_primary_button.dart';
+import 'package:food_delivery_application/core/global_widgets/custom_text_field.dart';
+import 'package:food_delivery_application/core/const/app_colors.dart';
+import 'package:food_delivery_application/core/const/imges_path.dart';
+import 'package:food_delivery_application/feature/auth/login/controller/login_controller.dart';
+import 'package:food_delivery_application/feature/auth/register/view/signup_screen.dart';
+import 'package:food_delivery_application/feature/auth/login/view/widgets/social_media_button.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 child: Image.asset(
-                  AppImages.backgroundImage,
+                  ImagePath.backgroundImage,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       // App Logo....
                       Image.asset(
-                        AppImages.appLogo,
+                        ImagePath.appLogo,
                         fit: BoxFit.contain,
                         height: 203,
                         width: 188,
@@ -176,11 +176,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             SocialMediaButton(
                               label: "Facebook",
-                              image: AppImages.facebookImg,
+                              image: ImagePath.facebookImg,
                             ),
                             SocialMediaButton(
                               label: "Google",
-                              image: AppImages.googleImg,
+                              image: ImagePath.googleImg,
                             ),
                           ],
                         ),

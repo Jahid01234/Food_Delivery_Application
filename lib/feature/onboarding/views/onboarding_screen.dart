@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
-import 'package:food_delivery_application/modules/auth_module/views/login_screen.dart';
-import 'package:food_delivery_application/modules/onboarding/controller/onboarding_controller.dart';
+import 'package:food_delivery_application/core/global_widgets/app_primary_button.dart';
+import 'package:food_delivery_application/feature/onboarding/controller/onboarding_controller.dart';
+import 'package:food_delivery_application/feature/auth/login/view/login_screen.dart';
 import 'package:get/get.dart';
 
 class OnboardingScreen extends StatefulWidget {

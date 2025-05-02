@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:food_delivery_application/common/snack_bar_message/my_snackbar_message.dart';
+import 'package:food_delivery_application/core/global_widgets/my_snackbar_message.dart';
 import 'package:get/get.dart';
 
 class SignupController extends GetxController{

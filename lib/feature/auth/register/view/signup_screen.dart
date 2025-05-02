@@ -1,14 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery_application/common/buttons/app_primary_button.dart';
-import 'package:food_delivery_application/common/snack_bar_message/my_snackbar_message.dart';
-import 'package:food_delivery_application/common/text_form_fields/custom_text_field.dart';
-import 'package:food_delivery_application/constant/app_colors.dart';
-import 'package:food_delivery_application/constant/app_imges.dart';
-import 'package:food_delivery_application/modules/auth_module/controller/signup_controller.dart';
-import 'package:food_delivery_application/modules/auth_module/views/login_screen.dart';
-import 'package:food_delivery_application/modules/auth_module/widgets/required_singup_conditons.dart';
+import 'package:food_delivery_application/core/global_widgets/app_primary_button.dart';
+import 'package:food_delivery_application/core/global_widgets/my_snackbar_message.dart';
+import 'package:food_delivery_application/core/global_widgets/custom_text_field.dart';
+import 'package:food_delivery_application/core/const/app_colors.dart';
+import 'package:food_delivery_application/core/const/imges_path.dart';
+import 'package:food_delivery_application/feature/auth/register/controller/signup_controller.dart';
+import 'package:food_delivery_application/feature/auth/login/view/login_screen.dart';
+import 'package:food_delivery_application/feature/auth/login/view/widgets/required_singup_conditons.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 child: Image.asset(
-                  AppImages.backgroundImage,
+                  ImagePath.backgroundImage,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -66,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       // App Logo....
                       Image.asset(
-                        AppImages.appLogo,
+                        ImagePath.appLogo,
                         fit: BoxFit.contain,
                         height: 203,
                         width: 188,
@@ -94,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               hintText: "Name",
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.all(13.0),
-                                child: SvgPicture.asset(AppImages.profileIcon),
+                                child: SvgPicture.asset(ImagePath.profileIcon),
                               ),
                               validator: (String? value){
                                 if(value==null || value.isEmpty){
@@ -111,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               hintText: "Email",
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.all(13.0),
-                                child: SvgPicture.asset(AppImages.emailIcon),
+                                child: SvgPicture.asset(ImagePath.emailIcon),
                               ),
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
@@ -131,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               hintText: "Password",
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.all(13.0),
-                                child: SvgPicture.asset(AppImages.lockIcon),
+                                child: SvgPicture.asset(ImagePath.lockIcon),
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {

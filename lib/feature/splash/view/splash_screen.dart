@@ -1,40 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_application/constant/app_imges.dart';
-import 'package:food_delivery_application/modules/onboarding/views/onboarding_screen.dart';
+import 'package:food_delivery_application/core/const/app_sizes.dart';
+import 'package:food_delivery_application/core/const/imges_path.dart';
+import 'package:food_delivery_application/feature/splash/controller/splash_controller.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
+class SplashScreen extends StatelessWidget {
+   SplashScreen({super.key});
 
-class _SplashScreenState extends State<SplashScreen> {
-  
-  @override
-  void initState() {
-    super.initState();
-    redirectToNextScreen();
-  }
+  final SplashController controller = Get.find<SplashController>();
 
-  // Go to onboarding screen ...
-  redirectToNextScreen()async{
-    await Future.delayed( const Duration(seconds: 2));
-    Get.to(const OnboardingScreen());
-  }
-  
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         clipBehavior: Clip.none,
         children: [
           // Background Image....
           Container(
-            height: 370,
-            width: size.width,
+            height: getHeight(370),
+            width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -46,21 +32,21 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             child: Image.asset(
-              AppImages.backgroundImage,
+              ImagePath.backgroundImage,
               fit: BoxFit.contain,
             ),
           ),
 
           // App Logo....
           Positioned(
-            top: 340,
+            top: getHeight(340),
             left: 0,
             right: 0,
             child: Image.asset(
-              AppImages.appLogo,
+              ImagePath.appLogo,
               fit: BoxFit.contain,
-              height: 203,
-              width: 188,
+              height: getHeight(203),
+              width: getWidth(188),
             ),
           ),
         ],
