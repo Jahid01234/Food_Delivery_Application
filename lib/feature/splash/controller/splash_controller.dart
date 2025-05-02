@@ -3,10 +3,16 @@ import 'package:get/get.dart';
 
 class SplashController extends GetxController{
 
+  @override
+  void onInit() {
+    super.onInit();
+    redirectToNextScreen();
+  }
+
   // Go to onboarding screen ...
-  void redirectToNextScreen()async{
+  Future<void> redirectToNextScreen()async{
     await Future.delayed( const Duration(seconds: 2));
-    Get.toNamed(AppRoutes.splash);
+    Get.offNamed(AppRoutes.onboarding);
   }
 
 }

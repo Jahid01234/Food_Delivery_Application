@@ -6,50 +6,51 @@ import 'package:get/get.dart';
 
 
 class SplashScreen extends StatelessWidget {
-   SplashScreen({super.key});
+    SplashScreen({super.key});
 
-  final SplashController controller = Get.find<SplashController>();
-
+    final SplashController controller = Get.find<SplashController>();
+   
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          // Background Image....
-          Container(
-            height: getHeight(370),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.black.withOpacity(0.2),
-                  Colors.black,
-                ],
+      body: SafeArea(
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            // Background Image....
+            Container(
+              height: getHeight(370),
+              width: screenWidth(),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withValues(alpha: 0.2),
+                    Colors.black,
+                  ],
+                ),
+              ),
+              child: Image.asset(
+                ImagePath.backgroundImage,
+                fit: BoxFit.contain,
               ),
             ),
-            child: Image.asset(
-              ImagePath.backgroundImage,
-              fit: BoxFit.contain,
+        
+            // App Logo....
+            Positioned(
+              top: getHeight(340),
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                ImagePath.appLogo,
+                fit: BoxFit.contain,
+                height: getHeight(203),
+                width: getWidth(188),
+              ),
             ),
-          ),
-
-          // App Logo....
-          Positioned(
-            top: getHeight(340),
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              ImagePath.appLogo,
-              fit: BoxFit.contain,
-              height: getHeight(203),
-              width: getWidth(188),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

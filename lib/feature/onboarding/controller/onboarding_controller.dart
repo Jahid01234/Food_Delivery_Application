@@ -1,22 +1,48 @@
-import 'package:food_delivery_application/core/const/imges_path.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery_application/core/route/routes.dart';
 import 'package:food_delivery_application/feature/onboarding/models/onboarding_model.dart';
 import 'package:get/get.dart';
 
-class OnboardingController extends GetxController{
 
-  RxInt index = 0.obs;
+class OnboardingController extends GetxController {
+  final pageController = PageController();
+  final currentIndex = 0.obs;
 
-  List<OnboardingModel> onboardingItemsList = [
-    OnboardingModel(
-        title: "Find your  Comfort\n Food here",
-        subTitle: "Here You Can find a chef or dish for every\n taste and color. Enjoy!",
-        image: ImagePath.onboardingImg1,
-    ),
-    OnboardingModel(
-      title: "Food Ninja is Where Your\n Comfort Food Lives",
-      subTitle: "Enjoy a fast and smooth food delivery at\n your doorstep.",
-      image: ImagePath.onboardingImg2,
-    ),
-  ];
+  var onboardingPage = <OnboardingModel>[].obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    loadOnboardingPage();
+  }
+
+
+  void loadOnboardingPage(){
+    onboardingPage.addAll(onboardingItemsListData);
+  }
+
+  void nextPage() {
+    if (currentIndex.value < onboardingPage.length - 1) {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    } else {
+      finishOnboarding();
+    }
+  }
+
+  void skip() {
+    finishOnboarding();
+  }
+
+  void finishOnboarding() {
+    Get.offNamed(AppRoutes.welcome);
+  }
+
+  @override
+  void onClose() {
+    pageController.dispose();
+    super.onClose();
+  }
 }
