@@ -51,25 +51,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ],
           ),
-           const SizedBox(height: 60),
+           SizedBox(height: MediaQuery.sizeOf(context).height* 0.12),
 
           // Button part...
-           AppPrimaryButton(
-            title: "Next",
-            onTap: () {
-              int tempIndex = onboardingController.index.value;
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 40),
+             child: AppPrimaryButton(
+              title: "Next",
+              width: double.infinity,
+              onTap: () {
+                int tempIndex = onboardingController.index.value;
 
-              if (tempIndex == onboardingController.onboardingItemsList.length - 1) {
-                // Go to next screen....
-                Get.to(const LoginScreen());
-              } else {
-                onboardingController.index(tempIndex + 1);
-              }
-            },
-          ),
+                if (tempIndex == onboardingController.onboardingItemsList.length - 1) {
+                  // Go to next screen....
+                  Get.to(const LoginScreen());
+                } else {
+                  onboardingController.index(tempIndex + 1);
+                }
+              },
+                       ),
+           ),
          ],
        ),
       ),
+
     );
   }
 }

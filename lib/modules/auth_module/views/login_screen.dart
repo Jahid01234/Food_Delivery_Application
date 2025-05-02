@@ -113,8 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 icon: Icon(
                                   loginController.obscureText.value
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
                                 ),
                               ),
                               validator: (String? value){
@@ -139,6 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             "Forget Your Password?",
                             style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              decorationStyle: TextDecorationStyle.solid,
+                              decorationColor: AppColors.lightGreenColor,
                               color: AppColors.lightGreenColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -148,14 +151,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 20),
                       // Or Continue With text part....
-                      const Text(
-                        "Or Continue With",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                       const Padding(
+                         padding: EdgeInsets.symmetric(horizontal: 20),
+                         child: Row(
+                           children: [
+                             Expanded(child: Divider(color: Colors.white)),
+                             Text(
+                              "Or Continue With",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                              ),
+                             ),
+                             Expanded(child: Divider(color: Colors.white)),
+                           ],
+                         ),
+                       ),
                       const SizedBox(height: 20),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -176,17 +188,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       const SizedBox(height: 30),
                       // Button part...
-                      AppPrimaryButton(
-                        title: "Log in",
-                        onTap: () {
-                          if(_formKey.currentState!.validate()){
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: AppPrimaryButton(
+                          title: "Log in",
+                          width: double.infinity,
+                          onTap: () {
+                            if(_formKey.currentState!.validate()){
 
-                          }
-                        },
+                            }
+                          },
+                        ),
                       ),
 
                       // Don't have an account? signUp....
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 30),
                       RichText(
                         text: TextSpan(
                           text: "Don't have an account? ",

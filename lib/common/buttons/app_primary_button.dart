@@ -1,11 +1,11 @@
-import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_application/constant/app_colors.dart';
 
 class AppPrimaryButton extends StatelessWidget {
   final String title;
-  final Double? height;
-  final Double? width;
+  final double? height;
+  final double? width;
   final Function()? onTap;
 
   const AppPrimaryButton({
@@ -21,8 +21,8 @@ class AppPrimaryButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 57,
-        width: 157,
+        height: height ?? 57,
+        width: width ?? 157,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: AppColors.lightGreenColor,

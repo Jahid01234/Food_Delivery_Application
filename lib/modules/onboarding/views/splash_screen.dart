@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
           // App Logo....
           Positioned(
-            top: 360,
+            top: 340,
             left: 0,
             right: 0,
             child: Image.asset(
