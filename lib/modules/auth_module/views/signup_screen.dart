@@ -140,8 +140,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 },
                                 icon: Icon(
                                   signupController.obscureText.value
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
                                 ),
                               ),
                               validator: (String? value){
@@ -159,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Obx(
                         () => Padding(
-                          padding: const EdgeInsets.only(left: 20, top: 10),
+                          padding: const EdgeInsets.only(left: 20, top: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -194,32 +194,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
 
                       // Button part...
-                      AppPrimaryButton(
-                        title: "Sign Up",
-                        onTap: () {
-                          if(_formKey.currentState!.validate()){
-                            signupController.createAccount(
-                              context: context,
-                              userName: _userNameController.text,
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            );
-                            _userNameController.clear();
-                            _emailController.clear();
-                            _passwordController.clear();
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: AppPrimaryButton(
+                          title: "Sign Up",
+                          width: double.infinity,
+                          onTap: () {
+                            if(_formKey.currentState!.validate()){
+                              signupController.createAccount(
+                                context: context,
+                                userName: _userNameController.text,
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              );
+                              _userNameController.clear();
+                              _emailController.clear();
+                              _passwordController.clear();
 
-                          }else{
-                            mySnackBarMessage('Fill up all the fields!', context);
-                          }
-                        },
+                            }else{
+                              mySnackBarMessage('Fill up all the fields!', context);
+                            }
+                          },
+                        ),
                       ),
 
 
                       // Don't have an account? signUp....
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
                           text: "Already have an account? ",
